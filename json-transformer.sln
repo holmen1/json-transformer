@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "json-transformer", "json-transformer\json-transformer.csproj", "{D11BF532-1A7B-4E8C-8EF3-E6C75A785B78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cli", "cli\cli.csproj", "{B75771DA-5F2E-4F2C-803E-3BB4C738AD98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{D11BF532-1A7B-4E8C-8EF3-E6C75A785B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D11BF532-1A7B-4E8C-8EF3-E6C75A785B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D11BF532-1A7B-4E8C-8EF3-E6C75A785B78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B75771DA-5F2E-4F2C-803E-3BB4C738AD98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B75771DA-5F2E-4F2C-803E-3BB4C738AD98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B75771DA-5F2E-4F2C-803E-3BB4C738AD98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B75771DA-5F2E-4F2C-803E-3BB4C738AD98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

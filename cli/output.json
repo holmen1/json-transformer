@@ -1,0 +1,22 @@
+{
+  "A": {
+    "HR": {
+      "Investment": 0,
+      "Cash": 0
+    },
+    "LR": {
+      "Investment": 0,
+      "Cash": 0
+    }
+  },
+  "B": {
+    "HR": {
+      "Investment": 0,
+      "Cash": 6.66
+    },
+    "LR": {
+      "Investment": 11,
+      "Cash": 0
+    }
+  }
+}
