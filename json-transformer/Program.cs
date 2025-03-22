@@ -18,12 +18,23 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
-app.MapPost("/assumptions", (AssumptionsModelDto model) =>
+app.MapPost("/assumptions", (AssumptionsModelDto requestModel) =>
     {
-        // Process the assumptions data (add your logic here)
-        // For now, just return the received data as confirmation
-        return Results.Ok(model);
+        // Map DTO to domain model
+        var domainModel = new AssumptionsModel
+        {
+            Assumptions = requestModel.Assumptions.Select(a => new Assumption
+            {
+                Level1 = Enum.Parse<Level1Type>(a.Level1),
+                Level2 = Enum.Parse<Level2Type>(a.Level2),
+                Level3 = Enum.Parse<Level3Type>(a.Level3, ignoreCase: true),
+                Value = a.Value
+            }).ToList()
+        };
+    
+        // Process the domain model
+    
+        return Results.Ok(requestModel); // Return DTO, not domain model
     })
     .WithName("PostAssumptions")
     .WithOpenApi();
