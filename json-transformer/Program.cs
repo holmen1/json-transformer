@@ -24,10 +24,10 @@ app.MapPost("/assumptions", (AssumptionsModelDto requestModel) =>
         // Use the mapper to convert DTO to domain model
         var domainModel = AssumptionMapper.ToAssumptionsModel(requestModel);
 
-        // Process the domain model
-        // Add business logic here
+        var assumptionDictionary = AssumptionMapper.ToAssumptionsDictionary(domainModel);
 
-        return Results.Ok(requestModel); // Return DTO, not domain model
+        var revesedDomainModel = AssumptionMapper.ToAssumptionsModelDto(domainModel);
+        return Results.Ok(revesedDomainModel); // Return domain model
     })
     .WithName("PostAssumptions")
     .WithOpenApi();
