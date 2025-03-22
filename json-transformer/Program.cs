@@ -1,3 +1,4 @@
+using json_transformer.Mappers;
 using json_transformer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,28 +21,15 @@ app.UseHttpsRedirection();
 
 app.MapPost("/assumptions", (AssumptionsModelDto requestModel) =>
     {
-        // Map DTO to domain model
-        var domainModel = new AssumptionsModel
-        {
-            Assumptions = requestModel.Assumptions.Select(a => new Assumption
-            {
-                Level1 = Enum.Parse<Level1Type>(a.Level1),
-                Level2 = Enum.Parse<Level2Type>(a.Level2),
-                Level3 = Enum.Parse<Level3Type>(a.Level3, ignoreCase: true),
-                Value = a.Value
-            }).ToList()
-        };
-    
+        // Use the mapper to convert DTO to domain model
+        var domainModel = AssumptionMapper.ToAssumptionsModel(requestModel);
+
         // Process the domain model
-    
+        // Add business logic here
+
         return Results.Ok(requestModel); // Return DTO, not domain model
     })
     .WithName("PostAssumptions")
     .WithOpenApi();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
