@@ -1,4 +1,4 @@
-namespace json_transformer.Models;
+namespace JsonTransformer.Core.Models;
 
 public class AssumptionDto
 {

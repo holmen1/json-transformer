@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "json-transformer", "json-transformer\json-transformer.csproj", "{D11BF532-1A7B-4E8C-8EF3-E6C75A785B78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTransformer.API", "JsonTransformer.API\JsonTransformer.API.csproj", "{D11BF532-1A7B-4E8C-8EF3-E6C75A785B78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cli", "cli\cli.csproj", "{B75771DA-5F2E-4F2C-803E-3BB4C738AD98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTransformer.Core", "JsonTransformer.Core\JsonTransformer.Core.csproj", "{2A4BEA9E-25FC-42AC-AEBA-0C480AE8FA05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,9 @@ Global
 		{B75771DA-5F2E-4F2C-803E-3BB4C738AD98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B75771DA-5F2E-4F2C-803E-3BB4C738AD98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B75771DA-5F2E-4F2C-803E-3BB4C738AD98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A4BEA9E-25FC-42AC-AEBA-0C480AE8FA05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A4BEA9E-25FC-42AC-AEBA-0C480AE8FA05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A4BEA9E-25FC-42AC-AEBA-0C480AE8FA05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A4BEA9E-25FC-42AC-AEBA-0C480AE8FA05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

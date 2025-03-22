@@ -1,6 +1,6 @@
-using json_transformer.Models;
+using JsonTransformer.Core.Models;
 
-namespace json_transformer.Mappers;
+namespace JsonTransformer.Core.Mappers;
 
 public static class AssumptionMapper
 {
@@ -32,9 +32,10 @@ public static class AssumptionMapper
             }).ToList()
         };
     }
-    
+
     // Generic method to convert a list of objects to a 3 level nested dictionary
-    public static Dictionary<TKey1, Dictionary<TKey2, Dictionary<TKey3, TValue>>> ToNestedDictionary<TKey1, TKey2, TKey3, TValue, TSource>(
+    public static Dictionary<TKey1, Dictionary<TKey2, Dictionary<TKey3, TValue>>> ToNestedDictionary<TKey1, TKey2,
+        TKey3, TValue, TSource>(
         IEnumerable<TSource> source,
         Func<TSource, TKey1> key1Selector,
         Func<TSource, TKey2> key2Selector,
@@ -50,25 +51,20 @@ public static class AssumptionMapper
             var key3 = key3Selector(item);
             var value = valueSelector(item);
 
-            if (!result.ContainsKey(key1))
-            {
-                result[key1] = new Dictionary<TKey2, Dictionary<TKey3, TValue>>();
-            }
+            if (!result.ContainsKey(key1)) result[key1] = new Dictionary<TKey2, Dictionary<TKey3, TValue>>();
 
-            if (!result[key1].ContainsKey(key2))
-            {
-                result[key1][key2] = new Dictionary<TKey3, TValue>();
-            }
+            if (!result[key1].ContainsKey(key2)) result[key1][key2] = new Dictionary<TKey3, TValue>();
 
             result[key1][key2][key3] = value;
         }
 
         return result;
     }
-    
-    public static Dictionary<Level1Type, Dictionary<Level2Type, Dictionary<Level3Type, double>>> ToAssumptionsDictionary(AssumptionsModel model)
+
+    public static Dictionary<Level1Type, Dictionary<Level2Type, Dictionary<Level3Type, double>>>
+        ToAssumptionsDictionary(AssumptionsModel model)
     {
-        return ToNestedDictionary<Level1Type, Level2Type, Level3Type, double, Assumption>(
+        return ToNestedDictionary(
             model.Assumptions,
             a => a.Level1,
             a => a.Level2,

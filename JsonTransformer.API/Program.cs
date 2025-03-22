@@ -1,5 +1,5 @@
-using json_transformer.Mappers;
-using json_transformer.Models;
+using JsonTransformer.Core.Mappers;
+using JsonTransformer.Core.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

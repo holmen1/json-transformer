@@ -1,4 +1,4 @@
-namespace json_transformer.Models;
+namespace JsonTransformer.Core.Models;
 
 public enum Level1Type { A, B }
 public enum Level2Type { HR, LR }
