@@ -33,28 +33,46 @@ public static class AssumptionMapper
         };
     }
     
+    // Generic method to convert a list of objects to a 3 level nested dictionary
+    public static Dictionary<TKey1, Dictionary<TKey2, Dictionary<TKey3, TValue>>> ToNestedDictionary<TKey1, TKey2, TKey3, TValue, TSource>(
+        IEnumerable<TSource> source,
+        Func<TSource, TKey1> key1Selector,
+        Func<TSource, TKey2> key2Selector,
+        Func<TSource, TKey3> key3Selector,
+        Func<TSource, TValue> valueSelector)
+    {
+        var result = new Dictionary<TKey1, Dictionary<TKey2, Dictionary<TKey3, TValue>>>();
+
+        foreach (var item in source)
+        {
+            var key1 = key1Selector(item);
+            var key2 = key2Selector(item);
+            var key3 = key3Selector(item);
+            var value = valueSelector(item);
+
+            if (!result.ContainsKey(key1))
+            {
+                result[key1] = new Dictionary<TKey2, Dictionary<TKey3, TValue>>();
+            }
+
+            if (!result[key1].ContainsKey(key2))
+            {
+                result[key1][key2] = new Dictionary<TKey3, TValue>();
+            }
+
+            result[key1][key2][key3] = value;
+        }
+
+        return result;
+    }
+    
     public static Dictionary<Level1Type, Dictionary<Level2Type, Dictionary<Level3Type, double>>> ToAssumptionsDictionary(AssumptionsModel model)
     {
-        var result = new Dictionary<Level1Type, Dictionary<Level2Type, Dictionary<Level3Type, double>>>();
-    
-        foreach (var assumption in model.Assumptions)
-        {
-            // Ensure the Level1 dictionary exists
-            if (!result.ContainsKey(assumption.Level1))
-            {
-                result[assumption.Level1] = new Dictionary<Level2Type, Dictionary<Level3Type, double>>();
-            }
-        
-            // Ensure the Level2 dictionary exists
-            if (!result[assumption.Level1].ContainsKey(assumption.Level2))
-            {
-                result[assumption.Level1][assumption.Level2] = new Dictionary<Level3Type, double>();
-            }
-        
-            // Set the value at Level3
-            result[assumption.Level1][assumption.Level2][assumption.Level3] = assumption.Value;
-        }
-    
-        return result;
+        return ToNestedDictionary<Level1Type, Level2Type, Level3Type, double, Assumption>(
+            model.Assumptions,
+            a => a.Level1,
+            a => a.Level2,
+            a => a.Level3,
+            a => a.Value);
     }
 }
